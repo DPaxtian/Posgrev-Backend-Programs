@@ -73,6 +73,71 @@ const saveGeneralData = async (identifierProgram, generalDataInformation) => {
 }
 
 
+const saveProgramContext = async (identifierProgram, contextInformation) => {
+    return new Promise((resolve, reject) => {
+        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "compromiso": contextInformation } })
+            .then(() => {
+                resolve(200)
+            })
+            .catch(() => {
+                reject(500);
+            });
+    });
+}
+
+
+const saveProgramInfrastructure = async (identifierProgram, infrastuctureInformation) => {
+    return new Promise((resolve, reject) => {
+        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "infraestructuraPrograma": infrastuctureInformation } })
+            .then(() => {
+                resolve(200)
+            })
+            .catch(() => {
+                reject(500);
+            });
+    });
+}
+
+
+const saveProgramStudentInfo = async (identifierProgram, studentInfo) => {
+    return new Promise((resolve, reject) => {
+        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "informacionSeguimiento": studentInfo } })
+            .then(() => {
+                resolve(200)
+            })
+            .catch(() => {
+                reject(500);
+            });
+    });
+}
+
+
+const saveProgramResults = async (identifierProgram, results) => {
+    return new Promise((resolve, reject) => {
+        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "resultados": results } })
+            .then(() => {
+                resolve(200)
+            })
+            .catch(() => {
+                reject(500);
+            });
+    });
+}
+
+
+const saveScholarProcess = async (identifierProgram, scholarProcess) => {
+    return new Promise((resolve, reject) => {
+        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "procesosEscolares": scholarProcess } })
+            .then(() => {
+                resolve(200)
+            })
+            .catch(() => {
+                reject(500);
+            });
+    });
+}
+
+
 
 const getDenominations = async () => {
     let items = {};
@@ -113,7 +178,12 @@ module.exports = {
     modifyProgram,
     getAllPrograms,
     getProgramDetails,
+    saveProgramInfrastructure,
+    saveScholarProcess,
     saveGeneralData,
+    saveProgramContext,
+    saveProgramStudentInfo,
+    saveProgramResults,
     getDenominations,
     getAdscriptions
 }

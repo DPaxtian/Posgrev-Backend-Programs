@@ -118,6 +118,121 @@ const saveGeneralData = async (req, res) => {
 }
 
 
+const saveProgramContext = async (req, res) => {
+    let resultCode = 500;
+    let response = "An error was ocurred :(";
+
+    try{
+        const identifierProgram = req.params.idProgram;
+        const programContextInfo = req.body;
+
+        resultCode = await programService.saveProgramContext(identifierProgram, programContextInfo);
+        if(resultCode == 200){
+            response = "Program context updated succesfully"
+        }
+    } catch(error){
+        response = "An error has been ocurred while saving the program context"
+    }
+
+    return res.status(resultCode).json({
+        code: resultCode,
+        msg: response
+    });
+}
+
+
+const saveProgramInfrastructure = async (req, res) => {
+    let resultCode = 500;
+    let response = "An error was ocurred :(";
+
+    try{
+        const identifierProgram = req.params.idProgram;
+        const infrastructureInformation = req.body;
+
+        resultCode = await programService.saveProgramInfrastructure(identifierProgram, infrastructureInformation);
+        if(resultCode == 200){
+            response = "Program Infrastructure updated succesfully"
+        }
+    } catch(error){
+        response = "An error has been ocurred while saving general data"
+    }
+
+    return res.status(resultCode).json({
+        code: resultCode,
+        msg: response
+    });
+}
+
+
+const saveStudentInfo = async (req, res) => {
+    let resultCode = 500;
+    let response = "An error was ocurred :(";
+
+    try{
+        const identifierProgram = req.params.idProgram;
+        const studentInfo = req.body;
+
+        resultCode = await programService.saveProgramStudentInfo(identifierProgram, studentInfo);
+        if(resultCode == 200){
+            response = "Student info updated succesfully"
+        }
+    } catch(error){
+        response = "An error has been ocurred while saving general data"
+    }
+
+    return res.status(resultCode).json({
+        code: resultCode,
+        msg: response
+    });
+}
+
+
+const saveProgramResults = async (req, res) => {
+    let resultCode = 500;
+    let response = "An error was ocurred :(";
+
+    try{
+        const identifierProgram = req.params.idProgram;
+        const results = req.body;
+
+        resultCode = await programService.saveProgramResults(identifierProgram, results);
+        if(resultCode == 200){
+            response = "program results updated succesfully"
+        }
+    } catch(error){
+        response = "An error has been ocurred while saving the program results"
+    }
+
+    return res.status(resultCode).json({
+        code: resultCode,
+        msg: response
+    });
+}
+
+
+const saveScholarProcess = async (req, res) => {
+    let resultCode = 500;
+    let response = "An error was ocurred :(";
+
+    try{
+        const identifierProgram = req.params.idProgram;
+        const scholarProcess = req.body;
+
+        resultCode = await programService.saveScholarProcess(identifierProgram, scholarProcess);
+        if(resultCode == 200){
+            response = "scholar processes updated succesfully"
+        }
+    } catch(error){
+        response = "An error has been ocurred while saving the scholar processes"
+    }
+
+    return res.status(resultCode).json({
+        code: resultCode,
+        msg: response
+    });
+}
+
+
 const getDenominations = async (req, res) => {
     let response = {}
     let resultCode = 500
@@ -167,6 +282,11 @@ module.exports = {
     createProgram,
     modifyProgram,
     getProgramDetails,
+    saveProgramInfrastructure,
+    saveStudentInfo,
+    saveScholarProcess,
+    saveProgramContext,
+    saveProgramResults,
     getAllPrograms,
     saveGeneralData,
     getDenominations,

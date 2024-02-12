@@ -24,6 +24,10 @@ const programSchema = new mongoose.Schema(
       anioPrograma: String
     },
     datosGenerales: {
+      estado: {
+        type: String,
+        default: "No Realizada"
+      },
       denominacion: {
         type: String,
         default: " "
@@ -90,6 +94,10 @@ const programSchema = new mongoose.Schema(
       }
     },
     compromiso: {
+      estado: {
+        type: String,
+        default: "No Realizada"
+      },
       compromisoPosgrado:{
         type: String,
         default: ""
@@ -104,6 +112,10 @@ const programSchema = new mongoose.Schema(
       }
     },
     infraestructuraPrograma: {
+      estado: {
+        type: String,
+        default: "No Realizada"
+      },
       planEstudios: {
         type: String,
         default: " "
@@ -160,6 +172,10 @@ const programSchema = new mongoose.Schema(
       }
     },
     procesosEscolares: {
+      estado: {
+        type: String,
+        default: "No Realizada"
+      },
       procesoAdmision: {
         type: String,
         default: " "
@@ -190,6 +206,10 @@ const programSchema = new mongoose.Schema(
       }
     },
     informacionSeguimiento: {
+      estado: {
+        type: String,
+        default: "No Realizada"
+      },
       estrategiasAntiplagio: {
         type: String,
         default: ""
@@ -284,6 +304,10 @@ const programSchema = new mongoose.Schema(
       }
     },
     resultados: {
+      estado: {
+        type: String,
+        default: "No Realizada"
+      },
       planMejora: {
         type: String,
         default: " "
