@@ -1,4 +1,5 @@
 const Program = require("../models/programModel");
+const ProgramIndicators = require("../models/programIndicatorsModel")
 const Denominations = require("../models/denominationsModel");
 const Adscriptions = require("../models/adscriptionsModel")
 
@@ -62,7 +63,7 @@ const getProgramDetails = async (idProgram) => {
 
 const saveGeneralData = async (identifierProgram, generalDataInformation) => {
     return new Promise((resolve, reject) => {
-        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "datosGenerales": generalDataInformation } })
+        ProgramIndicators.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "datosGenerales": generalDataInformation } })
             .then(() => {
                 resolve(200)
             })
@@ -75,7 +76,7 @@ const saveGeneralData = async (identifierProgram, generalDataInformation) => {
 
 const saveProgramContext = async (identifierProgram, contextInformation) => {
     return new Promise((resolve, reject) => {
-        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "compromiso": contextInformation } })
+        ProgramIndicators.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "compromiso": contextInformation } })
             .then(() => {
                 resolve(200)
             })
@@ -88,7 +89,7 @@ const saveProgramContext = async (identifierProgram, contextInformation) => {
 
 const saveProgramInfrastructure = async (identifierProgram, infrastuctureInformation) => {
     return new Promise((resolve, reject) => {
-        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "infraestructuraPrograma": infrastuctureInformation } })
+        ProgramIndicators.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "infraestructuraPrograma": infrastuctureInformation } })
             .then(() => {
                 resolve(200)
             })
@@ -101,7 +102,7 @@ const saveProgramInfrastructure = async (identifierProgram, infrastuctureInforma
 
 const saveProgramStudentInfo = async (identifierProgram, studentInfo) => {
     return new Promise((resolve, reject) => {
-        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "informacionSeguimiento": studentInfo } })
+        ProgramIndicators.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "informacionSeguimiento": studentInfo } })
             .then(() => {
                 resolve(200)
             })
@@ -114,7 +115,7 @@ const saveProgramStudentInfo = async (identifierProgram, studentInfo) => {
 
 const saveProgramResults = async (identifierProgram, results) => {
     return new Promise((resolve, reject) => {
-        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "resultados": results } })
+        ProgramIndicators.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "resultados": results } })
             .then(() => {
                 resolve(200)
             })
@@ -127,7 +128,7 @@ const saveProgramResults = async (identifierProgram, results) => {
 
 const saveScholarProcess = async (identifierProgram, scholarProcess) => {
     return new Promise((resolve, reject) => {
-        Program.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "procesosEscolares": scholarProcess } })
+        ProgramIndicators.findOneAndUpdate({ identificadorPrograma: identifierProgram }, { $set: { "procesosEscolares": scholarProcess } })
             .then(() => {
                 resolve(200)
             })
@@ -171,6 +172,20 @@ const getAdscriptions = async () => {
 }
 
 
+const createProgramIndicator = async (newProgramIndicator) => {
+    return new Promise((resolve, reject) => {
+        const programToSave = new ProgramIndicators(newProgramIndicator);
+        programToSave.save()
+            .then((result) => {
+                resolve(200)
+            })
+            .catch((error) => {
+                reject(500);
+            });
+    });
+}
+
+
 
 
 module.exports = {
@@ -185,5 +200,6 @@ module.exports = {
     saveProgramStudentInfo,
     saveProgramResults,
     getDenominations,
-    getAdscriptions
+    getAdscriptions,
+    createProgramIndicator
 }

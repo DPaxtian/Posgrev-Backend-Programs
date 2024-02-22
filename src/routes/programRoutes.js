@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { createProgram, modifyProgram, getAllPrograms, getProgramDetails, saveProgramContext, saveScholarProcess, saveProgramInfrastructure, saveStudentInfo, saveGeneralData, saveProgramResults, getDenominations, getAdscriptions } = require('../controllers/programController');
+const { createProgram, modifyProgram, getAllPrograms, getProgramDetails, createProgramIndicator, saveProgramContext, saveScholarProcess, saveProgramInfrastructure, saveStudentInfo, saveGeneralData, saveProgramResults, getDenominations, getAdscriptions } = require('../controllers/programController');
 const router = Router();
 
 router.post('/createProgram', createProgram)
@@ -14,7 +14,7 @@ router.patch('/saveResults/:idProgram', saveProgramResults)
 router.patch('/saveScholarProcess/:idProgram', saveScholarProcess)
 router.get('/getDenominations', getDenominations)
 router.get('/getAdscriptions', getAdscriptions)
-
+router.post('/createProgramIndicator', createProgramIndicator)
 
 
 module.exports = router;

@@ -278,6 +278,25 @@ const getAdscriptions = async (req, res) => {
     })
 }
 
+
+const createProgramIndicator = async (req, res) => {
+    let resultCode = 500;
+    let responseMessage = "Program not saved :(";
+    
+    try{
+        const newProgram = req.body;
+        resultCode = await programService.createProgramIndicator(newProgram);
+        responseMessage = "ProgramIndicator created succesfully";
+    } catch (error){
+        responseMessage = "An error has been ocurred while creating the program indicator program"
+    }
+
+    return res.status(resultCode).json({
+        code: resultCode,
+        msg: responseMessage
+    });
+}
+
 module.exports = {
     createProgram,
     modifyProgram,
@@ -290,5 +309,6 @@ module.exports = {
     getAllPrograms,
     saveGeneralData,
     getDenominations,
-    getAdscriptions
+    getAdscriptions,
+    createProgramIndicator
 }
